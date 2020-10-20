@@ -2,6 +2,7 @@
 #include <iostream>
 #include "SDL.h"
 #include "snake.h"
+#include "paddle.h"
 
 void Controller::ChangeDirection(Snake &snake, Snake::Direction input) const {
   snake.direction = input;

@@ -4,6 +4,7 @@
 CMakeFiles/Breakout.dir/src/controller.cpp.o
  /Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/controller.cpp
  /Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/controller.h
+ /Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/paddle.h
  /Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/snake.h
  /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL.h
  /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL_assert.h

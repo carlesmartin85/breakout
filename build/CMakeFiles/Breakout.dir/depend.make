@@ -3,6 +3,7 @@
 
 CMakeFiles/Breakout.dir/src/controller.cpp.o: ../src/controller.cpp
 CMakeFiles/Breakout.dir/src/controller.cpp.o: ../src/controller.h
+CMakeFiles/Breakout.dir/src/controller.cpp.o: ../src/paddle.h
 CMakeFiles/Breakout.dir/src/controller.cpp.o: ../src/snake.h
 CMakeFiles/Breakout.dir/src/controller.cpp.o: /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL.h
 CMakeFiles/Breakout.dir/src/controller.cpp.o: /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL_assert.h
