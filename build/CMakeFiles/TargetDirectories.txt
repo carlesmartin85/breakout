@@ -1,0 +1,3 @@
+/Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/build/CMakeFiles/rebuild_cache.dir
+/Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/build/CMakeFiles/edit_cache.dir
+/Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/build/CMakeFiles/Breakout.dir
