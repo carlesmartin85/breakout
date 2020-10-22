@@ -1,28 +1,40 @@
 #include "controller.h"
 #include <iostream>
 #include "SDL.h"
-#include "snake.h"
-#include "paddle.h"
+#include "main.h"
 
-void Controller::ChangeDirection(Snake &snake, Snake::Direction input) const {
-  snake.direction = input;
-  return;
-}
+constexpr std::size_t kPaddleSpeed = 20;
 
-void Controller::HandleInput(bool &running, Snake &snake) const {
+void Controller::HandleInput(bool &running, Paddle &paddle, Ball &ball) const {
   SDL_Event e;
+  
   while (SDL_PollEvent(&e)) {
     if (e.type == SDL_QUIT) {
       running = false;
     } else if (e.type == SDL_KEYDOWN) {
       switch (e.key.keysym.sym) {
         case SDLK_LEFT:
-          ChangeDirection(snake, Snake::Direction::kLeft);
-          break;
+          if (paddle.x - kPaddleSpeed >= kBorderWidth) {
+            paddle.x -= kPaddleSpeed;
+            break;
+          } else {
+              paddle.x = kBorderWidth;
+              break;
+          }
 
         case SDLK_RIGHT:
-          ChangeDirection(snake, Snake::Direction::kRight);
-          break;
+          if ((paddle.x + paddle.width - 1 + kPaddleSpeed) <= (kScreenWidth - kBorderWidth)) {
+              paddle.x += kPaddleSpeed;
+              break;
+          } else {
+              paddle.x = kScreenWidth - kBorderWidth - paddle.width - 1;
+              break;
+          }
+
+        case SDLK_SPACE:
+            if (ball.waiting) {
+                ball.waiting = false;
+            }
       }
     }
   }

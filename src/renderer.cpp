@@ -1,6 +1,4 @@
 #include "renderer.h"
-#include <iostream>
-#include <string>
 
 Renderer::Renderer(const std::size_t screen_width,
                    const std::size_t screen_height,
@@ -16,7 +14,7 @@ Renderer::Renderer(const std::size_t screen_width,
   }
 
   // Create Window
-  sdl_window = SDL_CreateWindow("Snake Game", SDL_WINDOWPOS_CENTERED,
+  sdl_window = SDL_CreateWindow("BREAKOUT", SDL_WINDOWPOS_CENTERED,
                                 SDL_WINDOWPOS_CENTERED, screen_width,
                                 screen_height, SDL_WINDOW_SHOWN);
 
@@ -38,44 +36,77 @@ Renderer::~Renderer() {
   SDL_Quit();
 }
 
-void Renderer::Render(Snake const snake, SDL_Point const &food) {
-  SDL_Rect block;
-  block.w = screen_width / grid_width;
-  block.h = screen_height / grid_height;
+void Renderer::RenderBlocks(SDL_Rect &block, const std::vector<std::vector<Block>> &blocks) {
+    for (int i = 0; i < kRowsPerGame; i++) {
+        switch (i) {
+            case (0):
+            case (1):
+                SDL_SetRenderDrawColor(sdl_renderer, 0xEE, 0x20, 0x4D, 0xFF);
+                break;
+            case (2):
+            case (3):
+                SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x75, 0x38, 0xFF);
+                break;
+            case (4):
+            case (5):
+                SDL_SetRenderDrawColor(sdl_renderer, 0x1C, 0xAC, 0x78, 0xFF);
+                break;
+            case (6):
+            case (7):
+                SDL_SetRenderDrawColor(sdl_renderer, 0xFC, 0xE8, 0x83, 0xFF);
+                break;
+        }
+        std::cout << "i = " << i << "\n";
+            
+        for (Block b : blocks[i]) {
+            if (b.alive) {
+                block.x = b.x;
+                block.y = b.y;
+                block.w = kBlockWidth;
+                block.h = kBlockHeight;
+                SDL_RenderFillRect(sdl_renderer, &block);
+            }
+        }
 
-  // Clear screen
-  SDL_SetRenderDrawColor(sdl_renderer, 0x1E, 0x1E, 0x1E, 0xFF);
-  SDL_RenderClear(sdl_renderer);
-
-  // Render food
-  SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0xCC, 0x00, 0xFF);
-  block.x = food.x * block.w;
-  block.y = food.y * block.h;
-  SDL_RenderFillRect(sdl_renderer, &block);
-
-  // Render snake's body
-  SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0xFF, 0xFF, 0xFF);
-  for (SDL_Point const &point : snake.body) {
-    block.x = point.x * block.w;
-    block.y = point.y * block.h;
-    SDL_RenderFillRect(sdl_renderer, &block);
-  }
-
-  // Render snake's head
-  block.x = static_cast<int>(snake.head_x) * block.w;
-  block.y = static_cast<int>(snake.head_y) * block.h;
-  if (snake.alive) {
-    SDL_SetRenderDrawColor(sdl_renderer, 0x00, 0x7A, 0xCC, 0xFF);
-  } else {
-    SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x00, 0x00, 0xFF);
-  }
-  SDL_RenderFillRect(sdl_renderer, &block);
-
-  // Update Screen
-  SDL_RenderPresent(sdl_renderer);
+        
+    }
 }
 
-void Renderer::UpdateWindowTitle(int score, int fps) {
-  std::string title{"Snake Score: " + std::to_string(score) + " FPS: " + std::to_string(fps)};
+void Renderer::Render(const Ball &ball, const Paddle &paddle, const std::vector<std::vector<Block>> &blocks) {
+    SDL_Rect block;
+
+    // Clear screen
+    SDL_SetRenderDrawColor(sdl_renderer, 0x1E, 0x1E, 0x1E, 0xFF);
+    SDL_RenderClear(sdl_renderer);
+
+    // Render blocks
+    RenderBlocks(block, blocks);
+
+
+    // Render ball
+    SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+    block.w = ball.sideLength;
+    block.h = ball.sideLength;
+    block.x = ball.x;
+    block.y = ball.y;
+    SDL_RenderFillRect(sdl_renderer, &block);
+
+    // Render paddle
+    SDL_SetRenderDrawColor(sdl_renderer, 0xBE, 0xBE, 0xBE, 0xFF);
+    block.w = paddle.width;
+    block.h = paddle.height;
+    block.x = paddle.x;
+    block.y = paddle.y;
+    SDL_RenderFillRect(sdl_renderer, &block);
+
+   SDL_RenderPresent(sdl_renderer);
+}
+
+void Renderer::GameplayWindowTitle(int score, int fps, int lives) {
+  std::string title{"Score: " + std::to_string(score) + " Lives Remaining: " + std::to_string(lives) + " FPS: " + std::to_string(fps)};
   SDL_SetWindowTitle(sdl_window, title.c_str());
+}
+
+void Renderer::WaitingWindowTitle(std::string msg) {
+    SDL_SetWindowTitle(sdl_window, msg.c_str());
 }

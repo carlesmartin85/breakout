@@ -2,10 +2,15 @@
 #define GAME_H
 
 #include <random>
+#include <memory>
+#include <string>
 #include "SDL.h"
 #include "controller.h"
 #include "renderer.h"
-#include "snake.h"
+#include "ball.h"
+#include "paddle.h"
+#include "block.h"
+#include "main.h"
 
 class Game {
  public:
@@ -13,20 +18,23 @@ class Game {
   void Run(Controller const &controller, Renderer &renderer,
            std::size_t target_frame_duration);
   int GetScore() const;
-  int GetSize() const;
+  int GetCount() const;
+
+  void UpdateHeaderText(std::string msg, Renderer &renderer, int &frame_count, Uint32 &title_timestamp, Uint32 &frame_end);
+  Ball ball;
+  Paddle paddle;
+  std::vector<std::vector<Block>> blocks;
 
  private:
-  Snake snake;
-  SDL_Point food;
+  
 
-  std::random_device dev;
-  std::mt19937 engine;
-  std::uniform_int_distribution<int> random_w;
-  std::uniform_int_distribution<int> random_h;
-
+  int brickCount{0};
   int score{0};
+  int livesRemaining{2};
+  bool gameOver{false};
 
-  void PlaceFood();
+
+  void MakeBlocks();
   void Update();
 };
 

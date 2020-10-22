@@ -142,6 +142,33 @@ Breakout/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Breakout.dir/build.make CMakeFiles/Breakout.dir/build
 .PHONY : Breakout/fast
 
+src/ball.o: src/ball.cpp.o
+
+.PHONY : src/ball.o
+
+# target to build an object file
+src/ball.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Breakout.dir/build.make CMakeFiles/Breakout.dir/src/ball.cpp.o
+.PHONY : src/ball.cpp.o
+
+src/ball.i: src/ball.cpp.i
+
+.PHONY : src/ball.i
+
+# target to preprocess a source file
+src/ball.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Breakout.dir/build.make CMakeFiles/Breakout.dir/src/ball.cpp.i
+.PHONY : src/ball.cpp.i
+
+src/ball.s: src/ball.cpp.s
+
+.PHONY : src/ball.s
+
+# target to generate assembly for a file
+src/ball.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Breakout.dir/build.make CMakeFiles/Breakout.dir/src/ball.cpp.s
+.PHONY : src/ball.cpp.s
+
 src/controller.o: src/controller.cpp.o
 
 .PHONY : src/controller.o
@@ -223,6 +250,33 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Breakout.dir/build.make CMakeFiles/Breakout.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/paddle.o: src/paddle.cpp.o
+
+.PHONY : src/paddle.o
+
+# target to build an object file
+src/paddle.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Breakout.dir/build.make CMakeFiles/Breakout.dir/src/paddle.cpp.o
+.PHONY : src/paddle.cpp.o
+
+src/paddle.i: src/paddle.cpp.i
+
+.PHONY : src/paddle.i
+
+# target to preprocess a source file
+src/paddle.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Breakout.dir/build.make CMakeFiles/Breakout.dir/src/paddle.cpp.i
+.PHONY : src/paddle.cpp.i
+
+src/paddle.s: src/paddle.cpp.s
+
+.PHONY : src/paddle.s
+
+# target to generate assembly for a file
+src/paddle.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Breakout.dir/build.make CMakeFiles/Breakout.dir/src/paddle.cpp.s
+.PHONY : src/paddle.cpp.s
+
 src/renderer.o: src/renderer.cpp.o
 
 .PHONY : src/renderer.o
@@ -250,33 +304,6 @@ src/renderer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Breakout.dir/build.make CMakeFiles/Breakout.dir/src/renderer.cpp.s
 .PHONY : src/renderer.cpp.s
 
-src/snake.o: src/snake.cpp.o
-
-.PHONY : src/snake.o
-
-# target to build an object file
-src/snake.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Breakout.dir/build.make CMakeFiles/Breakout.dir/src/snake.cpp.o
-.PHONY : src/snake.cpp.o
-
-src/snake.i: src/snake.cpp.i
-
-.PHONY : src/snake.i
-
-# target to preprocess a source file
-src/snake.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Breakout.dir/build.make CMakeFiles/Breakout.dir/src/snake.cpp.i
-.PHONY : src/snake.cpp.i
-
-src/snake.s: src/snake.cpp.s
-
-.PHONY : src/snake.s
-
-# target to generate assembly for a file
-src/snake.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Breakout.dir/build.make CMakeFiles/Breakout.dir/src/snake.cpp.s
-.PHONY : src/snake.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -286,6 +313,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Breakout"
+	@echo "... src/ball.o"
+	@echo "... src/ball.i"
+	@echo "... src/ball.s"
 	@echo "... src/controller.o"
 	@echo "... src/controller.i"
 	@echo "... src/controller.s"
@@ -295,12 +325,12 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/paddle.o"
+	@echo "... src/paddle.i"
+	@echo "... src/paddle.s"
 	@echo "... src/renderer.o"
 	@echo "... src/renderer.i"
 	@echo "... src/renderer.s"
-	@echo "... src/snake.o"
-	@echo "... src/snake.i"
-	@echo "... src/snake.s"
 .PHONY : help
 
 
