@@ -22,9 +22,9 @@ class Ball {
         int speed{5};
         //const int diameter{10};
         //const int radius{diameter / 2};
-        const int sideLength{20};
+        const int sideLength{15};
         bool waiting{true};
-        std::size_t x{kScreenWidth / 2};
+        std::size_t x{((kScreenWidth / 2) - (sideLength / 2))};
         std::size_t y{kScreenHeight - kBorderWidth - sideLength - Paddle::height};
 
    private:

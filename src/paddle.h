@@ -14,7 +14,7 @@ class Paddle {
         Paddle() {}
 
         int y{kScreenHeight - kBorderWidth - height};
-        int x{kScreenWidth / 2};
+        int x{((kScreenWidth / 2) - (width / 2))};
 
     private:
 

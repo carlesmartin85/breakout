@@ -56,7 +56,6 @@ void Renderer::RenderBlocks(SDL_Rect &block, const std::vector<std::vector<Block
                 SDL_SetRenderDrawColor(sdl_renderer, 0xFC, 0xE8, 0x83, 0xFF);
                 break;
         }
-        std::cout << "i = " << i << "\n";
             
         for (Block b : blocks[i]) {
             if (b.alive) {
@@ -103,7 +102,7 @@ void Renderer::Render(const Ball &ball, const Paddle &paddle, const std::vector<
 }
 
 void Renderer::GameplayWindowTitle(int score, int fps, int lives) {
-  std::string title{"Score: " + std::to_string(score) + " Lives Remaining: " + std::to_string(lives) + " FPS: " + std::to_string(fps)};
+  std::string title{"Score: " + std::to_string(score) + "  |  Lives Remaining: " + std::to_string(lives) + "  |  FPS: " + std::to_string(fps)};
   SDL_SetWindowTitle(sdl_window, title.c_str());
 }
 
