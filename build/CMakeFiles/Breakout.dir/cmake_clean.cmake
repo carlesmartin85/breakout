@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "Breakout"
   "Breakout.pdb"
   "CMakeFiles/Breakout.dir/src/ball.cpp.o"
+  "CMakeFiles/Breakout.dir/src/block.cpp.o"
   "CMakeFiles/Breakout.dir/src/controller.cpp.o"
   "CMakeFiles/Breakout.dir/src/game.cpp.o"
   "CMakeFiles/Breakout.dir/src/main.cpp.o"

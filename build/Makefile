@@ -169,6 +169,33 @@ src/ball.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Breakout.dir/build.make CMakeFiles/Breakout.dir/src/ball.cpp.s
 .PHONY : src/ball.cpp.s
 
+src/block.o: src/block.cpp.o
+
+.PHONY : src/block.o
+
+# target to build an object file
+src/block.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Breakout.dir/build.make CMakeFiles/Breakout.dir/src/block.cpp.o
+.PHONY : src/block.cpp.o
+
+src/block.i: src/block.cpp.i
+
+.PHONY : src/block.i
+
+# target to preprocess a source file
+src/block.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Breakout.dir/build.make CMakeFiles/Breakout.dir/src/block.cpp.i
+.PHONY : src/block.cpp.i
+
+src/block.s: src/block.cpp.s
+
+.PHONY : src/block.s
+
+# target to generate assembly for a file
+src/block.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Breakout.dir/build.make CMakeFiles/Breakout.dir/src/block.cpp.s
+.PHONY : src/block.cpp.s
+
 src/controller.o: src/controller.cpp.o
 
 .PHONY : src/controller.o
@@ -316,6 +343,9 @@ help:
 	@echo "... src/ball.o"
 	@echo "... src/ball.i"
 	@echo "... src/ball.s"
+	@echo "... src/block.o"
+	@echo "... src/block.i"
+	@echo "... src/block.s"
 	@echo "... src/controller.o"
 	@echo "... src/controller.i"
 	@echo "... src/controller.s"

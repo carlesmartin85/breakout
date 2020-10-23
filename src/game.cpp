@@ -1,8 +1,4 @@
-#include <iostream>
-#include <memory>
 #include "game.h"
-#include "SDL.h"
-#include "main.h"
 
 
 Game::Game(std::size_t grid_width, std::size_t grid_height) {}
@@ -21,7 +17,6 @@ void Game::Run(Controller &controller,
     MakeBlocks();
 
     while (running) {
-
         if (gameOver) {
             return;
         } else if (deadBlocks == blockCounter) {
@@ -46,8 +41,8 @@ void Game::Run(Controller &controller,
 
         frame_end = SDL_GetTicks();
 
-        // Keep track of how long each loop through the input/update/render cycle
-        // takes.
+        // Keep track of how long each loop through the input/update/render 
+        // cycle takes.
         frame_count++;
         frame_duration = frame_end - frame_start;
 
@@ -70,7 +65,9 @@ void Game::Run(Controller &controller,
                             frame_end);
         } 
         // In between rounds window title
-        else if (ball.waiting && livesRemaining >= 0 && frame_end - title_timestamp >= 1000) {
+        else if (ball.waiting &&
+                 livesRemaining >= 0 &&
+                 frame_end - title_timestamp >= 1000) {
             msg = "Please press the space bar to begin the next round";
             UpdateHeaderText(msg,
                             renderer,
@@ -80,7 +77,8 @@ void Game::Run(Controller &controller,
         } 
         // End of game window title
         else if (gameOver && frame_end - title_timestamp >= 500) {
-            msg = "Game over! Your final score is: " + std::to_string(score) + "  --  Please press the space bar to begin a new game.";
+            msg = "Game over! Your final score is: " + std::to_string(score) +
+                  "  --  Please press the space bar to begin a new game.";
             UpdateHeaderText(msg,
                             renderer,
                             frame_count,
@@ -96,20 +94,111 @@ void Game::Run(Controller &controller,
   }
 }
 
-void Game::UpdateHeaderText(std::string msg, Renderer &renderer, int &frame_count, Uint32 &title_timestamp, Uint32 &frame_end) {
+void Game::UpdateHeaderText(std::string msg,
+                            Renderer &renderer,
+                            int &frame_count,
+                            Uint32 &title_timestamp,
+                            Uint32 &frame_end) {
     renderer.WaitingWindowTitle(msg);
     frame_count = 0;
     title_timestamp = frame_end;
 }
 
+void Game::HandleBlockCorners(Block* block,
+                              Ball &ball,
+                              int &score,
+                              int &deadBlocks) {
+    // Handle bottom left corner
+    if (ball.direction == Ball::Direction::kNE &&
+       ball.x + ball.sideLength == block->x &&
+       ball.y == block->y + kBlockHeight) {
+        ball.ChangeVerticalDirection();
+    }
+    // Handle bottom right corner
+    else if (ball.direction == Ball::Direction::kNW &&
+            ball.x == block->x + kBlockWidth &&
+            ball.y == block->y + kBlockHeight) {
+        ball.ChangeVerticalDirection();
+    }
+    // Handle top left corner
+    else if (ball.direction == Ball::Direction::kSE &&
+            ball.x + ball.sideLength == block->x &&
+            ball.y + ball.sideLength == block->y) {
+        ball.ChangeVerticalDirection();
+    }
+    // Handle top right corner
+    else if (ball.direction == Ball::Direction::kSW &&
+            ball.x + ball.sideLength == block->x + kBlockWidth &&
+            ball.y + ball.sideLength == block->y) {
+        ball.ChangeVerticalDirection();
+    } else {
+        return;
+    }
 
-void DidBallHitSides(Ball &ball, bool condition, std::size_t limitation) {
-    if (condition) {
-        ball.x = limitation;
-        ball.ChangeHorizontalDirection();
+    block->alive = false;
+    score++;
+    deadBlocks += 1;
+    return;
+};
+
+// ensures that the block closest to the ball's trajectory is broken first
+void Game::HandleBallHittingBlockHelper() {
+    if (ball.direction == Ball::Direction::kNE ||
+        ball.direction == Ball::Direction::kNW) {
+        for (int i = kRowsPerGame - 1; i >= 0; i--) {
+            for (int j = 0; j < kBlocksPerRow; j++) {
+                // raw ptr so block isn't deleted when ptr goes out of scope
+                Block* block = &blocks[i][j];
+                HandleBallHittingBlock(block);
+            }
+        }
+    } else if (ball.direction == Ball::Direction::kSE ||
+               ball.direction == Ball::Direction::kSW) {
+        for (int i = 0; i < kRowsPerGame; i++) {
+            for (int j = 0; j < kBlocksPerRow; j++) {
+                // raw ptr so block isn't deleted when ptr goes out of scope
+                Block* block = &blocks[i][j];
+                HandleBallHittingBlock(block);
+
+            }
+        }
     }
 }
 
+void Game::HandleBallHittingBlock(Block* block) {
+    // If ball hits top or bottom of block
+    if (block->alive && 
+        (ball.y + ball.sideLength == block->y || 
+        ball.y == block->y + kBlockHeight) && 
+        ball.x + ball.sideLength > block->x && 
+        ball.x <= block->x + kBlockWidth) {                    
+        ball.ChangeVerticalDirection();
+        block->alive = false;
+        score++;
+        deadBlocks += 1;
+        return;
+    }
+    // If ball hits right or left side of block
+    else if (block->alive &&
+            (ball.x + ball.sideLength == block->x ||
+            ball.x == block->x + kBlockWidth) &&
+            ball.y + ball.sideLength > block->y &&
+            ball.y < block->y + kBlockHeight) {
+        ball.ChangeHorizontalDirection();
+        block->alive = false;
+        score++;
+        deadBlocks += 1;
+        return;
+    } 
+    // If ball hits corner of block
+    else {
+        HandleBlockCorners(block, ball, score, deadBlocks);
+    }
+}
+
+bool Game::IsBallDirectionOneOf(Ball &ball, Ball::Direction a, Ball::Direction b) {
+        return ball.direction == a || ball.direction == b;
+}
 
 void Game::Update() {
     if (livesRemaining < 0) return;
@@ -121,26 +210,22 @@ void Game::Update() {
         ball.Update();
     }
 
-    condition = (ball.direction == Ball::Direction::kNW ||
-                     ball.direction == Ball::Direction::kSW) &&
-                     ball.x - ball.speed <= kBorderWidth;
-    limitation = kBorderWidth;
-
-    DidBallHitSides(ball, condition, limitation);
-
-    condition = (ball.direction == Ball::Direction::kNE ||
-            ball.direction == Ball::Direction::kSE) &&
-            ball.x + ball.sideLength + ball.speed >=
-            kScreenWidth - kBorderWidth;
-
-    limitation = kScreenWidth - kBorderWidth;
-
-    DidBallHitSides(ball, condition, limitation);
-
+    // Check if ball hit left side of screen
+    if (IsBallDirectionOneOf(ball, Ball::Direction::kNW, Ball::Direction::kSW) &&
+        ball.x <= kBorderWidth) {
+        ball.x = kBorderWidth;
+        ball.ChangeHorizontalDirection();
+    }
+    // Check if ball hit right side of screen
+    else if (IsBallDirectionOneOf(ball, Ball::Direction::kNE, Ball::Direction::kSE) &&
+        ball.x + ball.sideLength >= kScreenWidth - kBorderWidth) {
+        ball.x = kScreenWidth - kBorderWidth;
+        ball.ChangeHorizontalDirection();
+    }
     // Check if ball hit top of screen
-    if ((ball.direction == Ball::Direction::kNW ||
-            ball.direction == Ball::Direction::kNE) &&
-            ball.y - ball.speed <= kBorderWidth) {
+    else if ((ball.direction == Ball::Direction::kNW ||
+        ball.direction == Ball::Direction::kNE) &&
+        ball.y <= kBorderWidth) {
         ball.y = kBorderWidth;
         ball.ChangeVerticalDirection();
     } 
@@ -159,49 +244,16 @@ void Game::Update() {
     // Check if ball hit paddle
     else if ((ball.direction == Ball::Direction::kSW ||
             ball.direction == Ball::Direction::kSE) && 
-            (ball.y + ball.sideLength >= paddle.y) &&
-            paddle.x + paddle.width > ball.x &&
-            ball.x + ball.sideLength - 1 >= paddle.x) {
-        ball.y = paddle.y - ball.sideLength;
+            ball.y + ball.sideLength == paddle.y &&
+            ball.x < paddle.x + paddle.width &&
+            ball.x + ball.sideLength > paddle.x) {
         ball.ChangeVerticalDirection();
     }
     // Check if ball hit block
     else {
-        for (int i = 0; i < kRowsPerGame; i ++) {
-            for (int j = 0; j < kBlocksPerRow; j++) {
-                // raw ptr used so block isn't deleted when ptr is out of scope
-                Block* block = &blocks[i][j];
-                // If ball hits top or bottom of block
-                if (block->alive && 
-                   (ball.y >= block->y - 1) && 
-                   (ball.y <= block->y + kBlockHeight) && 
-                   (ball.x > block->x) && 
-                   (ball.x < block->x + kBlockWidth)) {                    ball.y = block->y + (kBlockHeight / 2);
-                    ball.ChangeVerticalDirection();
-                    block->alive = false;
-                    score++;
-                    deadBlocks += 1;
-                }
-                
-                // If ball hits right or left side of block
-                else if (block->alive &&
-                        ((ball.x + ball.sideLength >= block->x - 1 &&
-                        ball.x + ball.sideLength <= block->x + ball.speed) ||
-                        (ball.x <= block->x + kBlockWidth &&
-                        ball.x >= block->x + kBlockWidth - ball.speed)) &&
-                        ball.y >= block->y - 2 &&
-                        ball.y <= block->y + kBlockHeight + 2) {
-                    ball.ChangeHorizontalDirection();
-                    block->alive = false;
-                    score++;
-                    deadBlocks += 1;
-                }
-
-            }
-        }
+        HandleBallHittingBlockHelper();
     }
 }
-
 
 void Game::MakeBlocks() {
     deadBlocks = 0;
