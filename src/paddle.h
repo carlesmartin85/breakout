@@ -6,19 +6,20 @@
 
 class Paddle {
     public:
-        int getLocation();
-
-        static constexpr std::size_t height{20};
-        static constexpr std::size_t width{200};
-
         Paddle() {}
 
-        int y{kScreenHeight - kBorderWidth - height};
-        int x{((kScreenWidth / 2) - (width / 2))};
-
-    private:
-
+        int GetX();
+        void SetX(int newX);
+        int GetY();
+        void SetY(int newY);
+        static int GetHeight();
+        static int GetWidth();
         
+    private:
+        static constexpr int height{20};
+        static constexpr int width{150};
+        int y{kScreenHeight - kBorderWidth - height};
+        int x{((kScreenWidth / 2) - (width / 2))};     
 };
 
 #endif

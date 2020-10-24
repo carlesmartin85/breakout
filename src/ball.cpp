@@ -67,7 +67,29 @@ void Ball::ChangeHorizontalDirection() {
 
 void Ball::Reset() {
     x = kScreenWidth / 2;
-    y = kScreenHeight - kBorderWidth - sideLength - Paddle::height;
+    y = kScreenHeight - kBorderWidth - sideLength - Paddle::GetHeight();
     waiting = true;
     direction = Direction::kNE;
 }
+
+int Ball::GetSpeed() { return speed; }
+
+void Ball::SetSpeed(int s) {speed = s; }
+
+int Ball::GetSideLength() { return sideLength; }
+
+bool Ball::GetWaitingStatus() { return waiting; }
+
+void Ball::SetWaitingStatus(bool b) { waiting = b; }
+
+int Ball::GetX() { return x; }
+
+void Ball::SetX(int newX) { x = newX; }
+
+int Ball::GetY() { return y; }
+
+void Ball::SetY(int newY) { y = newY; }
+
+Ball::Direction Ball::GetDirection() { return direction; }
+
+void Ball::SetDirection(Direction d) { direction = d; }

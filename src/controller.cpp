@@ -11,27 +11,27 @@ void Controller::HandleInput(bool &running,
         } else if (e.type == SDL_KEYDOWN) {
             switch (e.key.keysym.sym) {
             case SDLK_LEFT:
-                if (paddle.x - paddleSpeed >= (int) kBorderWidth) {
-                    paddle.x -= paddleSpeed;
+                if (paddle.GetX() - paddleSpeed >= (int) kBorderWidth) {
+                    paddle.SetX(paddle.GetX() - paddleSpeed);
                     break;
                 } else {
-                    paddle.x = (int) kBorderWidth;
+                    paddle.SetX((int) kBorderWidth);
                     break;
                 }
             case SDLK_RIGHT:
-                if (paddle.x + paddle.width - 1 + paddleSpeed <=
-                   (int) kScreenWidth - kBorderWidth) {
-                    paddle.x += paddleSpeed;
+                if (paddle.GetX() + paddle.GetWidth() - 1 + paddleSpeed <=
+                   (int) kScreenWidth - (int) kBorderWidth) {
+                    paddle.SetX(paddle.GetX() + paddleSpeed);
                     break;
                 } else {
-                    paddle.x = (int) kScreenWidth -
+                    paddle.SetX((int) kScreenWidth -
                                (int) kBorderWidth -
-                               paddle.width - 1;
+                               paddle.GetWidth() - 1);
                     break;
                 }
             case SDLK_SPACE:
-                if (ball.waiting) {
-                    ball.waiting = false;
+                if (ball.GetWaitingStatus()) {
+                    ball.SetWaitingStatus(false);
                     break;
                 }
             }

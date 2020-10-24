@@ -2,10 +2,10 @@
 #define BALL_H
 
 #include <iostream>
+#include <vector>
 #include "SDL.h"
 #include "main.h"
 #include "paddle.h"
-#include <vector>
 
 class Ball {
     public:
@@ -18,25 +18,24 @@ class Ball {
         void ChangeHorizontalDirection();
         void Reset();
         int GetSpeed();
+        void SetSpeed(int s);
         int GetSideLength();
-        int GetWaitingStatus();
+        bool GetWaitingStatus();
+        void SetWaitingStatus(bool b);
         int GetX();
-        int SetX(int x);
+        void SetX(int x);
         int GetY();
-        int SetY(int y);
-
-        Direction direction{Direction::kNE};
-
-        
+        void SetY(int y);
+        Direction GetDirection();
+        void SetDirection( Direction d);
 
     private:
         int speed{5}; // ball speed should be divisable by five on current grid
-        const int sideLength{15};
+        const int sideLength{10};
         bool waiting{true};
-        int x{((kScreenWidth / 2) - (sideLength / 2))};
-        int y{kScreenHeight - kBorderWidth - sideLength - Paddle::height};
-
-
+        std::size_t x{((kScreenWidth / 2) - (sideLength / 2))};
+        std::size_t y{kScreenHeight - kBorderWidth - sideLength - Paddle::GetHeight()};
+        Direction direction{Direction::kNE};
 };
 
 #endif

@@ -6,10 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/ball.cpp
-ball.h
-/Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/ball.h
-
 /Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/ball.h
 iostream
 -
@@ -22,19 +18,11 @@ paddle.h
 vector
 -
 
-/Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/block.cpp
-block.h
-/Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/block.h
-
 /Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/block.h
 SDL.h
 /Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/SDL.h
 main.h
 /Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/main.h
-
-/Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/controller.cpp
-controller.h
-/Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/controller.h
 
 /Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/controller.h
 iostream
@@ -92,19 +80,11 @@ renderer.h
 
 /Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/main.h
 
-/Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/paddle.cpp
-paddle.h
-/Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/paddle.h
-
 /Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/paddle.h
 string
 -
 main.h
 /Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/main.h
-
-/Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/renderer.cpp
-renderer.h
-/Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/renderer.h
 
 /Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/renderer.h
 vector

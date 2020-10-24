@@ -64,9 +64,9 @@ void Renderer::RenderBlocks(SDL_Rect &block, const std::vector<std::vector<Block
         }
             
         for (Block b : blocks[i]) {
-            if (b.alive) {
-                block.x = b.x;
-                block.y = b.y;
+            if (b.IsBlockActive()) {
+                block.x = b.GetX();
+                block.y = b.GetY();
                 block.w = kBlockWidth;
                 block.h = kBlockHeight;
                 SDL_RenderFillRect(sdl_renderer, &block);
@@ -77,7 +77,7 @@ void Renderer::RenderBlocks(SDL_Rect &block, const std::vector<std::vector<Block
     }
 }
 
-void Renderer::Render(const Ball &ball, const Paddle &paddle, const std::vector<std::vector<Block>> &blocks) {
+void Renderer::Render(Ball &ball, Paddle &paddle, const std::vector<std::vector<Block>> &blocks) {
     SDL_Rect block;
 
     // Clear screen
@@ -90,32 +90,23 @@ void Renderer::Render(const Ball &ball, const Paddle &paddle, const std::vector<
 
     // Render ball
     SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0xFF, 0xFF, 0xFF);
-    block.w = ball.sideLength;
-    block.h = ball.sideLength;
-    block.x = ball.x;
-    block.y = ball.y;
+    block.w = ball.GetSideLength();
+    block.h = ball.GetSideLength();
+    block.x = ball.GetX();
+    block.y = ball.GetY();
     SDL_RenderFillRect(sdl_renderer, &block);
 
     // Render paddle
     SDL_SetRenderDrawColor(sdl_renderer, 0xBE, 0xBE, 0xBE, 0xFF);
-    block.w = paddle.width;
-    block.h = paddle.height;
-    block.x = paddle.x;
-    block.y = paddle.y;
+    block.w = paddle.GetWidth();
+    block.h = paddle.GetHeight();
+    block.x = paddle.GetX();
+    block.y = paddle.GetY();
     SDL_RenderFillRect(sdl_renderer, &block);
 
     SDL_RenderPresent(sdl_renderer);
 }
 
-void Renderer::GameplayWindowTitle(int score, int fps, int lives) {
-    std::string title{"Score: " + std::to_string(score) +
-                      "  |  Lives Remaining: " +
-                      std::to_string(lives) +
-                      "  |  FPS: " +
-                      std::to_string(fps)};
-    SDL_SetWindowTitle(sdl_window, title.c_str());
-}
-
-void Renderer::WaitingWindowTitle(std::string msg) {
+void Renderer::UpdateWindowTitle(std::string msg) {
     SDL_SetWindowTitle(sdl_window, msg.c_str());
 }
