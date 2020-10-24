@@ -1,6 +1,6 @@
 # CPPND: Capstone Breakout Game
 
-This is a game designed to complete the Capstone project of the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213).
+This game was designed as the Capstone project of the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213).
 
 In this project, I attempt to emulate the original arcade console version of [Breakout] (https://en.wikipedia.org/wiki/Breakout_(video_game)), first designed and built by Steve Wozniak.
 
