@@ -2,13 +2,13 @@
 
 This game was designed as the Capstone project of the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213).
 
-In this project, I attempted to emulate the original arcade console version of [Breakout] (https://en.wikipedia.org/wiki/Breakout_(video_game)), first designed and built by Steve Wozniak for Atari in 1976.
+In this project, I attempted to emulate the original arcade console version of [Breakout](https://en.wikipedia.org/wiki/Breakout_(video_game)), first designed and built by Steve Wozniak for Atari in 1976.
 
 Once you begin the game, use the spacebar to launch the ball at the beginning of each round and move the paddle back and forth with the left and right arrow keys, trying your best to keep the ball from going off the bottom edge of the screen.
 
 All of the files for this project are contained within the .src folder, which contains individual .h/.cpp files for each of the classes required for the game: paddle, brick, and ball, as well as .h/.cpp files for the renderer, controller, and  game, in addition to the main .h/.cpp files that launch the game.
 
-![Breakout Image] (https://drive.google.com/uc?export=view&id=1eGxM83ILpMWHQgQ1PCmou0QooHPwP8ko)
+![Breakout Image](https://drive.google.com/uc?export=view&id=1eGxM83ILpMWHQgQ1PCmou0QooHPwP8ko)
 
 ## Dependencies for Running Locally
 * cmake >= 3.7
