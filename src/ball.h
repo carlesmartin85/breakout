@@ -27,7 +27,7 @@ class Ball {
         int GetY();
         void SetY(int y);
         Direction GetDirection();
-        void SetDirection( Direction d);
+        void SetDirection(Direction d);
 
     private:
         int speed{5}; // ball speed should be divisable by five on current grid

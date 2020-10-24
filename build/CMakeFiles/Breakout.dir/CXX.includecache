@@ -6,8 +6,14 @@
 
 #IncludeRegexTransform: 
 
+/Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/ball.cpp
+ball.h
+/Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/ball.h
+
 /Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/ball.h
 iostream
+-
+vector
 -
 SDL.h
 /Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/SDL.h
@@ -15,14 +21,16 @@ main.h
 /Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/main.h
 paddle.h
 /Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/paddle.h
-vector
--
 
 /Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/block.h
 SDL.h
 /Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/SDL.h
 main.h
 /Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/main.h
+
+/Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/controller.cpp
+controller.h
+/Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/controller.h
 
 /Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/controller.h
 iostream
@@ -86,12 +94,18 @@ string
 main.h
 /Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/main.h
 
+/Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/renderer.cpp
+renderer.h
+/Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/renderer.h
+
 /Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/renderer.h
 vector
 -
 iostream
 -
 string
+-
+memory
 -
 SDL.h
 /Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/SDL.h
@@ -103,8 +117,6 @@ block.h
 /Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/block.h
 main.h
 /Users/Tyla/desktop/Programming/Udacity/4C++/CppND-Capstone-Breakout-Game/src/main.h
-memory
--
 
 /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2/SDL.h
 SDL_main.h
