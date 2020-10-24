@@ -8,6 +8,8 @@ Once you begin the game, use the spacebar to launch the ball at the beginning of
 
 All of the files for this project are contained within the .src folder, which contains individual .h/.cpp files for each of the classes required for the game: paddle, brick, and ball, as well as .h/.cpp files for the renderer, controller, and  game, in addition to the main .h/.cpp files that launch the game.
 
+![Breakout Image] (https://drive.google.com/file/d/1eGxM83ILpMWHQgQ1PCmou0QooHPwP8ko/preview)
+
 ## Dependencies for Running Locally
 * cmake >= 3.7
   * All OSes: [click here for installation instructions](https://cmake.org/install/)
