@@ -34,17 +34,17 @@ All of the files for this project are contained within the .src folder, which co
 
 ## Udacity Rubric Points
 
-__* Compiling and testing__
+__Compiling and testing__
     * The project compiles and runs without errors
 
 
-__* Loops, Functions, I/O__
+__Loops, Functions, I/O__
     * The project demonstrates an understanding of C++ functions and control structures
         * This occurs throughout the entire project
     * The project accepts user input and processes the input
         * This occurs in the controller.cpp file
 
-__* Object Oriented Programming__
+__Object Oriented Programming__
     * The project uses Object Oriented Programming techniques
         * This occurs in the paddle.h/.cpp, ball.h/.cpp, block.h/.cpp, and game.h/.cpp files
     * Classes use appropriate access specifiers for class members
@@ -56,7 +56,7 @@ __* Object Oriented Programming__
     * Classes encapsulate behavior
         * This occurs in the paddle.h/.cpp, ball.h/.cpp, block.h/.cpp, and game.h/.cpp files
 
-__* Memory Management__
+__Memory Management__
     * The project makes use of references in function declarations
         * This occurs in game.h on lines 38-41 and 44-47, and in the corresponding function definitions in game.cpp
     * The project uses destructors appropriately
