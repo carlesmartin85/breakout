@@ -31,3 +31,33 @@ All of the files for this project are contained within the .src folder, which co
 2. Make a build directory in the top level directory: `mkdir build && cd build`
 3. Compile: `cmake .. && make`
 4. Run it: `./breakout`.
+
+## Udacity Rubric Points
+
+* Compiling and testing
+    * The project compiles and runs without errors
+
+(My chosen requirements from the [Udacity rubric](https://review.udacity.com/#!/rubrics/2533/):
+* Loops, Functions, I/O
+    * The project demonstrates an understanding of C++ functions and control structures
+        * This occurs throughout the entire project
+    * The project accepts user input and processes the input
+        * This occurs in the controller.cpp file
+
+* Object Oriented Programming
+    * The project uses Object Oriented Programming techniques
+        * This occurs in the paddle.h/.cpp, ball.h/.cpp, block.h/.cpp, and game.h/.cpp files
+    * Classes use appropriate access specifiers for class members
+        * This occurs in the paddle.h/.cpp, ball.h/.cpp, block.h/.cpp, and game.h/.cpp files
+    * Class constructors utilize member initialization lists
+        * This occurs in block.h on line 12
+    * Classes abstract implementation details from their interfaces
+        * This occurs in the private member variables in paddle.h/.cpp, ball.h/.cpp, block.h/.cpp, and game.h/.cpp files
+    * Classes encapsulate behavior
+        * This occurs in the paddle.h/.cpp, ball.h/.cpp, block.h/.cpp, and game.h/.cpp files
+
+* Memory Management
+    * The project makes use of references in function declarations
+        * This occurs in game.h on lines 38-41 and 44-47, and in the corresponding function definitions in game.cpp
+    * The project uses destructors appropriately
+        * This occurs in the renderer.h on line 18 and in the corresponding implementation in renderer.cpp on lines 39-42
