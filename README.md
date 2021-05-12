@@ -31,7 +31,7 @@ Once you begin the game, use the spacebar to launch the ball at the beginning of
 4. Run it: `./breakout`
 
 ## Contributing Authors
-C. Tyler Dennis  
+C. Tyler Dennis
 Udacity
 
 ## Licensing
