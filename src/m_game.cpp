@@ -1,20 +1,20 @@
 export module game;
 
+import <iostream>;
+import <random>;
+import <memory>;
+import <string>;
+import <utility>;
+
+export import controller;
+export import renderer;
+export import ball;
+export import paddle;
+export import block;
+export import main;
+
 export
 {
-
-    import <iostream>;
-    import <random>;
-    import <memory>;
-    import <string>;
-    import <utility>;
-
-import controller;
-import renderer;
-import ball;
-import paddle;
-import block;
-import main;
 
     class Game
     {

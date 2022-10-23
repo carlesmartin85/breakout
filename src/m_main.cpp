@@ -2,6 +2,9 @@ export module main;
 export
 {
 
+//#include <cstddef>
+namespace std {using size_t = decltype(sizeof(int));}
+
     // to ensure that the current game physics are correct, kScreenWidth, kScreenHeight, kGridBlockSize, kBorderWidth, (kScreenWidth / kBlocksPerRow), and (kScreenHeight / kRowsPerGame) should all be evenly divisable by five
     constexpr std::size_t kFramesPerSecond{60};
     constexpr std::size_t kMsPerFrame{1000 / kFramesPerSecond};

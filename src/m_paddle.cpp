@@ -1,11 +1,11 @@
 export module paddle;
 
-export
-{
-
 import <string>;
 
-import main;
+export import main;
+
+export
+{
 
     class Paddle
     {

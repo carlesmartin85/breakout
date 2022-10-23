@@ -1,13 +1,13 @@
 export module ball;
 
+import <iostream>;
+import <vector>;
+
+export import main;
+export import paddle;
+
 export
 {
-
-  import <iostream>;
-  import <vector>;
-
-import main;
-import paddle;
 
   class Ball
   {

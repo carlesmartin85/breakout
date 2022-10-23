@@ -1,10 +1,11 @@
 export module block;
 
+export import main;
+
+#include "SDL.h"
+
 export
 {
-    #include "SDL.h"
-
-import main;
 
     constexpr int kBlockHeight = 20;
     constexpr int kBlockWidth = (((kScreenWidth + 1) - (kBorderWidth * (kBlocksPerRow + 1))) / kBlocksPerRow);

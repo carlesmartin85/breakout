@@ -1,19 +1,19 @@
 export module renderer;
 
-export
-{
-
-import <vector>;
 import <iostream>;
+import <vector>;
 import <string>;
 import <memory>;
 
-import ball;
-import paddle;
-import block;
-import main;
+export import ball;
+export import paddle;
+export import block;
+export import main;
 
 #include "SDL.h"
+
+export
+{
 
     class Renderer
     {

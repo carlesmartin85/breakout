@@ -36,7 +36,6 @@ function(add_module name)
                         -o ${name}.pcm
                         `sdl2-config --cflags --libs`
                     )
-            # g++ -std=c++20 -fmodules-ts -xc++-system-header cstudio
           elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
             # using Visual Studio C++
             add_custom_target(${name}.obj
@@ -69,7 +68,9 @@ elseif (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
   add_module(paddle src/m_paddle.cpp)
   add_module(renderer src/m_renderer.cpp)
 
-  add_executable(breakout src/main.cpp)
+  add_executable(${PROJECT_NAME} src/main.cpp)
+
+  target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARIES})
 
   add_custom_target(ball src/m_ball.cpp)
   add_custom_target(block src/m_block.cpp)
@@ -79,8 +80,6 @@ elseif (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
   add_custom_target(paddle src/m_paddle.cpp)
   add_custom_target(renderer src/m_renderer.cpp)
 
-  target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARIES})
-
   target_link_options(breakout PUBLIC "LINKER:ball.pcm")
   target_link_options(breakout PUBLIC "LINKER:block.pcm")
   target_link_options(breakout PUBLIC "LINKER:controller.pcm")
@@ -88,10 +87,8 @@ elseif (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
   target_link_options(breakout PUBLIC "LINKER:main.pcm")
   target_link_options(breakout PUBLIC "LINKER:paddle.pcm")
   target_link_options(breakout PUBLIC "LINKER:renderer.pcm")
-  
-  add_dependencies(renderer ball.pcm block.pcm controller.pcm game.pcm main.pcm paddle.pcm breakout renderer.pcm)
-
-  add_dependencies(breakout ball.pcm block.pcm controller.pcm game.pcm main.pcm paddle.pcm breakout renderer.pcm)
+ 
+  add_dependencies(breakout ball.pcm block.pcm controller.pcm game.pcm main.pcm paddle.pcm renderer.pcm)
 
 elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
   # using Visual Studio C++

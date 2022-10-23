@@ -1,15 +1,15 @@
 export module controller;
 
+import <iostream>;
+
+export import ball;
+export import paddle;
+export import main;
+
+#include "SDL.h"
+
 export
 {
-
-    import <iostream>;
-
-import ball;
-import paddle;
-import main;
-
-    import <SDL>;
 
     class Controller
     {
