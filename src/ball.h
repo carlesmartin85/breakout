@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <vector>
-#include "SDL.h"
 #include "main.h"
 #include "paddle.h"
 

@@ -6,7 +6,6 @@
 #include <memory>
 #include <string>
 #include <utility>
-#include "SDL.h"
 #include "controller.h"
 #include "renderer.h"
 #include "ball.h"
