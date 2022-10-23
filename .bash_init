@@ -1,0 +1,6 @@
+g++ -std=c++2a -fmodules-ts -xc++-system-header iostream;
+g++ -std=c++2a -fmodules-ts -xc++-system-header random;
+g++ -std=c++2a -fmodules-ts -xc++-system-header memory;
+g++ -std=c++2a -fmodules-ts -xc++-system-header string;
+g++ -std=c++2a -fmodules-ts -xc++-system-header utility;
+g++ -std=c++2a -fmodules-ts -xc++-system-header vector;

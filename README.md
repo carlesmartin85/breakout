@@ -1,8 +1,6 @@
 # Breakout - Atari Clone
 
-## Udacity C++ Nanodegree - Capstone Project
-
-In this project, I attempted to emulate the original arcade console version of [Breakout](https://en.wikipedia.org/wiki/Breakout_(video_game)), first designed and built by Steve Wozniak for Atari in 1976.
+Clone of the original arcade console version of [Breakout](https://en.wikipedia.org/wiki/Breakout_(video_game)), first designed and built by Steve Wozniak for Atari in 1976.
 
 Once you begin the game, use the spacebar to launch the ball at the beginning of each round and move the paddle back and forth with the left and right arrow keys, trying your best to keep the ball from going off the bottom edge of the screen.
 
@@ -26,11 +24,12 @@ Once you begin the game, use the spacebar to launch the ball at the beginning of
 ## Compiling and Running
 
 1. Clone this repo
-2. Make a build directory in the top level directory: `mkdir build && cd build`
+2. Make a build directory in the top level directory: `mkdir build && cd build && source ../.bash_init`
 3. Compile: `cmake .. && make`
 4. Run it: `./breakout`
 
 ## Contributing Authors
+Carlos Martin\
 C. Tyler Dennis\
 Udacity
 

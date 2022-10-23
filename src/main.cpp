@@ -1,7 +1,8 @@
-#include <iostream>
-#include "main.h"
-#include "controller.h"
-#include "game.h"
+import <iostream>;
+
+import main;
+import controller;
+import game;
 
 int main() {
   Renderer renderer(kScreenWidth, kScreenHeight, kGridWidth, kGridHeight);
